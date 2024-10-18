@@ -10,7 +10,7 @@ import { getProjects, getProjectsImage } from "@/lib/query";
 
 export default async function Home() {
   const projectImages = await getProjectsImage();
-  console.log(projectImages.projectList);
+
   return (
     <main className="relative bg-body">
       <CustomCursor projectImage={projectImages.projectList} />

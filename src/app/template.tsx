@@ -31,6 +31,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
     animatePagein();
   });
 
-  return <div className="content-anim">{children}</div>;
-  return <div>{isLoading ? <Loading /> : children}</div>;
+  return (
+    <div className="content-anim">{isLoading ? <Loading /> : children}</div>
+  );
 }
