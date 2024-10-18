@@ -17,7 +17,7 @@ interface ProjectImage {
 export default function CustomCursor({
   projectImage,
 }: {
-  projectImage: ProjectImage[];
+  projectImage?: ProjectImage[];
 }) {
   const cursorRef = useRef<HTMLDivElement>(null);
   const inneCursorRef = useRef<HTMLDivElement>(null);
@@ -26,9 +26,9 @@ export default function CustomCursor({
   const cursorTextRef = useRef<HTMLDivElement>(null);
 
   // Filter the project image array to find the one with the matching activeSlug
-  const activeProjectImage = projectImage.find(
-    (p) => p.slug.current === activeSlug
-  );
+
+  const activeProjectImage =
+    projectImage && projectImage.find((p) => p.slug.current === activeSlug);
 
   useEffect(() => {
     const cursor = cursorRef.current;
@@ -58,9 +58,8 @@ export default function CustomCursor({
       const hrefSlug = target.getAttribute("href")?.split("/").pop(); // Assuming slugs are at the end of the URL
 
       // Check if the hovered link's slug matches any project image slug
-      const isProjectLink = projectImage.some(
-        (p) => p.slug.current === hrefSlug
-      );
+      const isProjectLink =
+        projectImage && projectImage.some((p) => p.slug.current === hrefSlug);
 
       // Scale only the cursor container, not the text
       gsap.to(cursor, {

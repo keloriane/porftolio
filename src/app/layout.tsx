@@ -23,6 +23,7 @@ export default function RootLayout({
         <SlugProvider>
           <body>
             <Menu />
+
             {children}
           </body>
         </SlugProvider>

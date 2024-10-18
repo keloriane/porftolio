@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import React from "react";
 import HeroProject from "@/components/common/HeroProject/hero-project";
+import CustomCursor from "@/components/common/Cursor/cursor";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,6 +20,7 @@ export default async function ProjectPage({
 
   return (
     <div>
+      <CustomCursor />
       <HeroProject projectItem={projectItem} />
     </div>
   );

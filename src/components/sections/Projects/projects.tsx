@@ -12,7 +12,7 @@ const Projects = async () => {
     <section id={"projects"} className="mt-[250px] relative">
       <GridContainer columns={24}>
         {projects[0].projectList.map((project) => (
-          <ProjectItem project={project} />
+          <ProjectItem project={project} key={project._key} />
         ))}
       </GridContainer>
     </section>

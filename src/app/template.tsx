@@ -8,6 +8,7 @@ import CustomCursor from "@/components/common/Cursor/cursor";
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const { isLoading } = useLoading();
+
   useEffect(() => {
     const lenis = new Lenis();
     function raf(time: any) {

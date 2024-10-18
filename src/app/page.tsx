@@ -16,8 +16,8 @@ export default async function Home() {
       <CustomCursor projectImage={projectImages.projectList} />
       <Menu />
       <Hero />
-      <Projects />
       <About />
+      <Projects />
       <Expertises />
       <Testimonials />
       <Footer />
