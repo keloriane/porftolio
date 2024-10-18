@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { LoadingProvider } from "@/context/LoadingContext";
+import Menu from "@/components/common/Menu/menu";
+import { SlugProvider } from "@/context/SlugContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +19,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <LoadingProvider>
+        <SlugProvider>
+          <body>
+            <Menu />
+            {children}
+          </body>
+        </SlugProvider>
+      </LoadingProvider>
     </html>
   );
 }

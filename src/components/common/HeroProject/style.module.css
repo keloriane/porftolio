@@ -1,0 +1,12 @@
+
+
+
+.challengeContainer ul {
+    list-style: disc;
+    line-height: 36px;
+
+}
+
+.challengeContainer li {
+    margin-bottom: 24px;
+}

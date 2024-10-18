@@ -1,7 +1,8 @@
+@import url("https://use.typekit.net/tuz2emc.css");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -16,18 +17,50 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+
+
+
+h1 , h2 , h3, h4 , p , ul {
+  font-family: 'degular' , sans-serif;
+  
+
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+p {
+  font-size: 18px;
 }
+.testimonial-container .swiper-slide {
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+.testimonial-container .swiper-slide-active {
+  opacity: 1;
+}
+
+
+
+
+
+.curve svg, .curve .background {
+	 position: fixed;
+	 height: calc(100vh + 600px);
+	 width: 100vw;
+	 pointer-events: none;
+	 left: 0;
+	 top: 0;
+}
+ .curve .background {
+	 background-color: black;
+	 transition: opacity 0s linear 0.1s;
+}
+ .curve .route {
+	 position: absolute;
+	 left: 50%;
+	 top: 40%;
+	 color: white;
+	 font-size: 46px;
+	 z-index: 3;
+	 transform: translateX(-50%);
+	 text-align: center;
+}
+ 
