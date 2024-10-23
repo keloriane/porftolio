@@ -114,9 +114,6 @@ export default class Sketch {
     this.settings = {
       progress: 0,
     };
-
-    this.gui = new dat.GUI();
-    this.gui.add(this.settings, "progress", 0, 1, 0.001);
   }
 
   resize(): void {
@@ -166,7 +163,7 @@ export default class Sketch {
       uniforms: {
         time: { value: 0 },
         uImage: { value: 0 },
-        hover: { value: new THREE.Vector2(0.5, 0.5) },
+        hover: { value: new THREE.Vector2(0.1, 0.1) },
         hoverState: { value: 0 },
         uProgress: { value: 0 }, // Start at 0 (normal size)
         uCorners: { value: new THREE.Vector4(0, 0, 0, 0) },
@@ -192,15 +189,15 @@ export default class Sketch {
         geometry = new THREE.PlaneGeometry(
           bounds.height * aspectRatio,
           bounds.height,
-          10,
-          10
+          100,
+          100
         );
       } else {
         geometry = new THREE.PlaneGeometry(
           bounds.width,
           bounds.width / aspectRatio,
-          10,
-          10
+          100,
+          100
         );
       }
 
@@ -226,17 +223,18 @@ export default class Sketch {
       // Add hover effects
       img.addEventListener("mouseenter", () => {
         gsap.to(material.uniforms.hoverState, {
-          duration: 1,
-          value: 1,
-          ease: "power3.out",
+          duration: 0.5,
+          value: 1, // Set hoverState to 1 (fully hovered)
+          ease: "power2.out",
         });
       });
 
+      // On hover end
       img.addEventListener("mouseout", () => {
         gsap.to(material.uniforms.hoverState, {
-          duration: 1,
-          value: 0,
-          ease: "power3.out",
+          duration: 0.5,
+          value: 0, // Set hoverState to 0 (no hover)
+          ease: "power2.out",
         });
       });
 

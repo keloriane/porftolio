@@ -57,20 +57,27 @@ const ProjectPageItem = ({ projects }: { projects: Project[] }) => {
       ></div>
       <GridContainer columns={23}>
         {projects.map((project: Project, index: number) => (
-          <Column colStart={2} colEnd={23} key={project._key}>
-            <div className="flex flex-col max-w-[1200px] mt-[100px]">
+          <Column
+            colStart={index % 2 === 0 ? 2 : [2, 2, 2, 13, 13]}
+            colEnd={index % 2 === 0 ? [23, 23, 23, 12] : [23, 23, 23, 23]}
+            key={project._key}
+          >
+            <Link
+              href={`/projects/${project.slug.current}`}
+              className="flex flex-col max-w-[700px] mt-[100px]"
+            >
               <div>
                 <h3 className="text-[40px] font-thin text-primary">
                   {project.projectTitle}
                 </h3>
                 <div className="h-[.4px] w-full border-black border-[.5px]"></div>
               </div>
-              <div className="max-w-[1200px] w-full h-[800px] relative">
+              <div className="max-w-[700px] w-full h-[400px] relative">
                 {/* Using <img> instead of Next.js Image component */}
                 <img
                   src={urlFor(project.previewSecond).url()}
                   alt={project.projectTitle}
-                  className="object-cover opacity-0  w-full h-full"
+                  className="object-cover opacity-0 w-full h-full"
                   ref={(el) => {
                     if (el) {
                       el.crossOrigin = "anonymous";
@@ -81,7 +88,7 @@ const ProjectPageItem = ({ projects }: { projects: Project[] }) => {
                   onError={handleImageLoad} // Handle image loading errors
                 />
               </div>
-            </div>
+            </Link>
           </Column>
         ))}
       </GridContainer>
