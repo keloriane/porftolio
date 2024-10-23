@@ -10,7 +10,7 @@ interface GridContainerProps {
 const GridContainer: React.FC<GridContainerProps> = ({
   children,
   columns,
-  gap = "4",
+  gap = "0",
   className = "",
 }) => {
   const colClass = `grid-cols-${columns}`;

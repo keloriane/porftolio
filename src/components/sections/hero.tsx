@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
         {/* Left Section (Text) */}
         <div id="title" className="text-grey">
           <h2
-            className="text-[80px] font-light leading-tight font-primary"
+            className="text-[38px] md:text-[68px] lg:text-[80px] font-light leading-tight font-primary"
             ref={titleRef}
           >
             Creative Developer <br />

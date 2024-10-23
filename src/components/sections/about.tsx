@@ -15,8 +15,8 @@ const About = () => {
         </Column>
 
         <Column
-          colStart={[2, 2, 15, 15]}
-          colEnd={[16, 23, 23, 23]}
+          colStart={[2, 2, 12, 12]}
+          colEnd={[18, 23, 23, 23]}
           className="lg:mt-[200px] mt-[75px]"
         >
           <p className="font-primary text-[16px]  md:text-xl text-[#434B50]">
