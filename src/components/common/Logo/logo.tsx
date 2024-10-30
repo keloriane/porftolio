@@ -6,7 +6,7 @@ const Logo = () => {
   const rectRef2 = useRef(null);
   const rectRef3 = useRef(null);
 
-  const colors = ["#2d3142", "#4f5d75", "#bfc0c0", "#ffffff", "#ef8354"];
+  const colors = ["#2d3142", "#4f5d75", "#bfc0c0", "#942828", "#ef8354"];
   const [currentColorIndex, setCurrentColorIndex] = useState(0);
 
   useEffect(() => {

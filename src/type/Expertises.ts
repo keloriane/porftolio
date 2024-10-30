@@ -13,7 +13,7 @@ export type ExpertiseTag = {
 
 export type Expertise = {
   expertiseTitle: string;
-  expertisesDescription: string;
+  expertisesDescription: [];
   _key: string;
   tags: ExpertiseTag[];
 };

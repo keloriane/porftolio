@@ -24,6 +24,7 @@ export default function CustomCursor({
   const { activeSlug } = useSlugContext();
 
   const cursorTextRef = useRef<HTMLDivElement>(null);
+  const cursorCaseRef = useRef<HTMLDivElement>(null);
 
   const activeProjectImage =
     projectImage && projectImage.find((p) => p.slug.current === activeSlug);
@@ -117,6 +118,15 @@ export default function CustomCursor({
           }}
         >
           Click
+        </p>
+        <p
+          ref={cursorCaseRef}
+          className="text-[7px] font-semibold text-body opacity-0 hidden"
+          style={{
+            transform: "none",
+          }}
+        >
+          See case
         </p>
 
         {activeProjectImage && (

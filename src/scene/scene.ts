@@ -221,21 +221,11 @@ export default class Sketch {
       });
 
       // Add hover effects
-      img.addEventListener("mouseenter", () => {
-        gsap.to(material.uniforms.hoverState, {
-          duration: 0.5,
-          value: 1, // Set hoverState to 1 (fully hovered)
-          ease: "power2.out",
-        });
-      });
 
-      // On hover end
-      img.addEventListener("mouseout", () => {
-        gsap.to(material.uniforms.hoverState, {
-          duration: 0.5,
-          value: 0, // Set hoverState to 0 (no hover)
-          ease: "power2.out",
-        });
+      gsap.to(material.uniforms.hoverState, {
+        duration: 0.5,
+        value: 1, // Set hoverState to 1 (fully hovered)
+        ease: "power2.out",
       });
 
       // Add click event to expand to full screen

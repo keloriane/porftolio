@@ -1,99 +1,116 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import Sketch from "@/scene/scene";
 import { urlFor } from "@/sanity/lib/image";
 import { Project } from "@/type";
 import Link from "next/link";
-import Column from "@/components/common/Col/col";
-import GridContainer from "@/components/common/Container/container";
+import { Badge } from "@/components/Ui/badge";
 
-const ProjectPageItem = ({ projects }: { projects: Project[] }) => {
-  const containerRef = useRef<HTMLDivElement>(null); // Ref for the WebGL container
-  const sketchRef = useRef<Sketch | null>(null); // To store the Sketch instance
-  const imagesRefs = useRef<(HTMLImageElement | null)[]>([]); // Store the image refs
-  const [areImagesLoaded, setAreImagesLoaded] = useState(false); // To track if all images are loaded
-  const [loadedImagesCount, setLoadedImagesCount] = useState(0); // Track the number of loaded images
+export default function BentoGridProjects({
+  projects,
+}: {
+  projects: Project[];
+}) {
+  const imagesRefs = useRef<(HTMLImageElement | null)[]>([]);
+  const [areImagesLoaded, setAreImagesLoaded] = useState(false);
+  const [loadedImagesCount, setLoadedImagesCount] = useState(0);
 
   useEffect(() => {
-    // Check if all images are loaded
     if (loadedImagesCount === projects.length) {
       setAreImagesLoaded(true);
     }
   }, [loadedImagesCount, projects.length]);
 
   useEffect(() => {
-    // Only run this when images are loaded and the container is available
-
     window.scrollTo(0, 0);
-    if (
-      containerRef.current &&
-      areImagesLoaded &&
-      imagesRefs.current.length > 0
-    ) {
-      sketchRef.current = new Sketch({
-        container: containerRef.current, // Pass the container
-        images: imagesRefs.current as HTMLImageElement[], // Ensure all image elements are loaded
-      });
-    }
-
-    return () => {
-      if (sketchRef.current) {
-        sketchRef.current = null; // Cleanup WebGL instance
-      }
-    };
-  }, [areImagesLoaded]);
+  }, []);
 
   const handleImageLoad = () => {
-    setLoadedImagesCount((prev) => prev + 1); // Increment the loaded image count
+    setLoadedImagesCount((prev) => prev + 1);
   };
 
   return (
-    <div className="pt-[250px] flex items-center justify-center w-screen">
-      {/* WebGL scene container */}
-      <div
-        ref={containerRef}
-        className="w-screen h-screen fixed -z-10 top-0 left-0"
-      ></div>
-      <GridContainer columns={23}>
-        {projects.map((project: Project, index: number) => (
-          <Column
-            colStart={index % 2 === 0 ? 2 : [2, 2, 2, 13, 13]}
-            colEnd={index % 2 === 0 ? [23, 23, 23, 12] : [23, 23, 23, 23]}
-            key={project._key}
-          >
+    <div className="container mx-auto px-4 pt-[100px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-screen">
+        {projects.map((project: Project, index: number) => {
+          const isLarge = index % 7 === 0; // More sparse large items
+          const isWide = index % 4 === 1; // Widens every fourth item except large ones
+          const isLastItem = index === projects.length - 1; // Identify last item
+
+          return (
             <Link
+              key={project.slug.current}
               href={`/projects/${project.slug.current}`}
-              className="flex flex-col max-w-[700px] mt-[100px]"
+              className={`group relative overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-2xl ${
+                isLarge
+                  ? "md:col-span-2 md:row-span-2"
+                  : isWide
+                    ? "md:col-span-1"
+                    : ""
+              } ${isLastItem ? "lg:col-end-4 lg:col-start-1 h-[320px]" : ""}`}
             >
-              <div>
-                <h3 className="text-[40px] font-thin text-primary">
-                  {project.projectTitle}
-                </h3>
-                <div className="h-[.4px] w-full border-black border-[.5px]"></div>
-              </div>
-              <div className="max-w-[700px] w-full h-[400px] relative">
-                {/* Using <img> instead of Next.js Image component */}
-                <img
-                  src={urlFor(project.previewSecond).url()}
-                  alt={project.projectTitle}
-                  className="object-cover opacity-0 w-full h-full"
-                  ref={(el) => {
-                    if (el) {
-                      el.crossOrigin = "anonymous";
-                      imagesRefs.current[index] = el;
-                    }
-                  }}
-                  onLoad={handleImageLoad} // Track when image is loaded
-                  onError={handleImageLoad} // Handle image loading errors
-                />
+              {/* Dark overlay with gradient on hover */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-60" />
+
+              {/* Project Image */}
+              <img
+                src={urlFor(project.previewSecond).url()}
+                alt={project.projectTitle}
+                className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
+                  isLarge ? "aspect-square" : "aspect-video"
+                }`}
+                ref={(el) => {
+                  if (el) {
+                    el.crossOrigin = "anonymous";
+                    imagesRefs.current[index] = el;
+                  }
+                }}
+                onLoad={handleImageLoad}
+                onError={handleImageLoad}
+              />
+
+              {/* Project Details on Hover */}
+              <div className="absolute inset-0 p-6  flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="flex justify-between">
+                  <h3 className="text-4xl font-semibold text-white mb-2">
+                    {project.projectTitle}
+                  </h3>
+                  <div className="flex flex-wrap gap-2 items-center ">
+                    {project.tech.slice(0, 3).map((tag: any) => (
+                      <Badge
+                        key={tag.alt}
+                        variant="secondary"
+                        className={`text-xs font-light flex items-center bg-white max-h-[20px] backdrop-blur-md rounded-full`}
+                      >
+                        {tag && (
+                          <img
+                            src={urlFor(tag).url()}
+                            alt={tag.alt}
+                            className={`object-contain ${
+                              tag.alt === "Nextjs" ? "h-[17px]" : "h-[20px]"
+                            } ${tag.alt === "Sanity" ? "h-[17px]" : "h-[20px]"}`}
+                          />
+                        )}
+                        {tag.alt !== "Nextjs" &&
+                          tag.alt !== "Sanity" &&
+                          tag.alt}
+                      </Badge>
+                    ))}
+                    {project.tech.length > 3 && (
+                      <Badge
+                        variant="secondary"
+                        className="text-xs bg-white backdrop-blur-md rounded-full max-h-[30px]"
+                      >
+                        +{project.tech.length - 3}
+                      </Badge>
+                    )}
+                  </div>
+                </div>
               </div>
             </Link>
-          </Column>
-        ))}
-      </GridContainer>
+          );
+        })}
+      </div>
     </div>
   );
-};
-
-export default ProjectPageItem;
+}

@@ -73,20 +73,21 @@ const HeroProject: React.FC<{ projectItem: Project }> = ({ projectItem }) => {
 
   const renderTechBadges = () => (
     <div className="flex gap-[20px] flex-wrap items-center mt-[24px]">
-      {projectItem.tech.map((tag) => (
+      {projectItem.tags.map((tag, i) => (
         <Badge
-          key={tag.alt}
-          variant="default"
-          className="text-[17px] text-light font-light flex items-center px-[10px] gap-[5px] border-none"
+          variant={"default"}
+          className="text-[17px] text-light font-light flex items-center px-[10px] gap-[5px]"
+          key={i}
         >
+          <div></div>
           {tag && (
             <img
               src={urlFor(tag).url()}
               alt=""
-              className={`h-[${tag.alt === "Nextjs" || tag.alt === "Sanity" ? "20px" : "20px"}]`}
+              className={`${tag === "Nextjs" ? "h-[18px]" : "h-[30px]"}`}
             />
           )}
-          {tag.alt !== "Nextjs" && tag.alt !== "Sanity" && tag.alt}
+          {tag !== "Nextjs" && tag}
         </Badge>
       ))}
     </div>
@@ -100,7 +101,7 @@ const HeroProject: React.FC<{ projectItem: Project }> = ({ projectItem }) => {
       >
         <div className="absolute inset-0 bg-black bg-opacity-50 z-10" />
         <Image
-          src={urlFor(projectItem.preview).url()}
+          src={urlFor(projectItem.previewSecond).url()}
           alt=""
           fill
           className="object-cover"

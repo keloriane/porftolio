@@ -8,6 +8,7 @@ import GridContainer from "@/components/common/Container/container";
 import { Badge } from "@/components/Ui/badge";
 import { urlFor } from "@/sanity/lib/image";
 import { Expertise } from "@/type";
+import { PortableText } from "next-sanity";
 
 // Register ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
@@ -85,8 +86,13 @@ const ExpertiseItemSection = ({ expertises }: { expertises: Expertise[] }) => {
               colEnd={[25, 25, 25, 25]}
               className="animated-content h-0 opacity-0 overflow-hidden"
             >
-              <div>
-                <p className="leading-[30px]">{exp.expertisesDescription}</p>
+              <div
+                className="leading-8 text-xl text-gray-700"
+                style={{
+                  listStyle: "disc",
+                }}
+              >
+                <PortableText value={exp.expertisesDescription} />
               </div>
             </Column>
 
@@ -107,11 +113,11 @@ const ExpertiseItemSection = ({ expertises }: { expertises: Expertise[] }) => {
                       src={urlFor(tag.tagImage).url()}
                       alt=""
                       className={`${
-                        tag.tagTitle === "Nextjs" ? "h-[12px]" : "h-[25px]"
-                      }`}
+                        tag.tagTitle === "Nextjs" ? "h-[14px]" : "h-[20px]"
+                      } `}
                     />
                   )}
-                  {tag.tagTitle !== "Nextjs" && tag.tagTitle}
+                  <p>{tag.tagTitle !== "Nextjs" && tag.tagTitle}</p>
                 </Badge>
               ))}
             </Column>

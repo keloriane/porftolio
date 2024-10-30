@@ -2,9 +2,8 @@
 import React, { useEffect } from "react";
 import gsap from "gsap";
 import { useLoading } from "@/context/LoadingContext";
-import Loading from "@/components/common/Loading/loading";
+
 import Lenis from "lenis";
-import CustomCursor from "@/components/common/Cursor/cursor";
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const { isLoading } = useLoading();

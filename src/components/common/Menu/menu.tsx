@@ -13,7 +13,7 @@ const Menu = () => {
   return (
     <>
       {/* Header */}
-      <header className="fixed w-full top-0 left-0 z-50 text-primary px-2 sm:px-10 py-2 border-b bg-body border-[#D9D9D9]">
+      <header className="fixed w-full top-0 left-0 z-50 text-primary px-2 sm:px-10 border-b pt-[5px] pb-[5px] bg-body/80  backdrop-blur-sm border-[#D9D9D9]">
         <div className="flex justify-between items-center">
           {/* Left Section: Name */}
           <div className="flex items-center gap-[24px]">
@@ -22,20 +22,20 @@ const Menu = () => {
                 <Logo />
               </Link>
             </h1>
-            <nav className="hidden md:flex space-x-6 text-lg">
-              <a href="#about" className="hover:text-gray-400">
+            <nav className="hidden md:flex space-x-6 text-[16px]">
+              <a href="/#about" className="hover:text-accent">
                 About
               </a>
-              <a href="#projects" className="hover:text-gray-400">
+              <a href="/projects" className="hover:text-accent">
                 Projects
               </a>
-              <a href="#expertises" className="hover:text-gray-400">
+              <a href="#expertises" className="hover:text-accent">
                 Expertises
               </a>
-              <a href="#testimonials" className="hover:text-gray-400">
+              <a href="/#testimonials" className="hover:text-accent">
                 Testimonials
               </a>
-              <a href="#contact" className="hover:text-gray-400">
+              <a href="/contact" className="hover:text-accent">
                 Contact
               </a>
             </nav>
@@ -155,7 +155,7 @@ const Menu = () => {
             <a href="#about" className="block py-2 hover:text-gray-400">
               About
             </a>
-            <a href="#projects" className="block py-2 hover:text-gray-400">
+            <a href="/projects" className="block py-2 hover:text-gray-400">
               Projects
             </a>
             <a href="#expertises" className="block py-2 hover:text-gray-400">

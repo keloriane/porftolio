@@ -3,7 +3,7 @@
     "default": {
       "theme_color": {
         "primary": "#121212",
-        "accent": "#FF8616",
+        "accent": "#FF6500",
         "body": "#fff",
         "border": "#eaeaea",
         "lightXl": "#F2F2F2",
@@ -14,13 +14,13 @@
         "default": "#444",
         "dark": "#000",
         "light": "#666",
-        "accent": "#FF8616"
+        "accent": "#FF6500"
       }
     },
     "darkmode": {
       "theme_color": {
         "primary": "#fff",
-        "accent": "#FF8616",
+        "accent": "#FF6500",
         "body": "#252525",
         "border": "#3E3E3E",
         "lightXl": "#F2F2F2",

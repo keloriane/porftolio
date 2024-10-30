@@ -52,9 +52,11 @@ const Footer = () => {
         }}
         ref={curveRef}
       ></div>
-      <Link href={"/contact"} className="text-6xl">
-        Get in touch
-      </Link>
+      <div className="flex flex-col">
+        <Link href={"/contact"} className="text-6xl">
+          Get in touch
+        </Link>
+      </div>
     </footer>
   );
 };

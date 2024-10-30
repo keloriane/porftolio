@@ -1,6 +1,5 @@
 import { getTestimonials } from "@/lib/query/testimonialsQuery";
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import Testimonial from "./testimonial";
 import GridContainer from "@/components/common/Container/container";
 import Column from "@/components/common/Col/col";

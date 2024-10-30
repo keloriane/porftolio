@@ -17,17 +17,22 @@ const About = () => {
         <Column
           colStart={[2, 2, 12, 12]}
           colEnd={[18, 23, 23, 23]}
-          className="lg:mt-[200px] mt-[75px]"
+          className="lg:mt-[200px] mt-[75px] flex flex-col gap-10"
         >
           <p className="font-primary text-[16px]  md:text-xl text-[#434B50]">
-            We craft virtual experiences that have the power
-            to unite, excite, educate, enhance work environments, and boost
-            business performance. Leveraging immersive technologies, we
-            guide companies in comprehending and seamlessly incorporating them.
-            We craft virtual experiences that have the power
-            to unite, excite, educate, enhance work environments, and boost
-            business performance. Leveraging immersive technologies, we
-            guide companies in comprehending and seamlessly incorporating them.
+            With 6 years of experience as a web developer, I’ve honed my skills
+            in transforming design into interactive, high-performing websites.
+            My expertise spans various frameworks like Next.js, React, and
+            WordPress, while I am equally adept at creating custom themes, UX/UI
+            prototypes, and robust e-commerce platforms.
+          </p>
+          <p className="font-primary text-[16px]  md:text-xl text-[#434B50]">
+            I’m passionate about combining code and design to create seamless
+            user experiences, delivering websites that are both visually
+            compelling and technically sound. From crafting bespoke animations
+            using GSAP and Lottie to integrating headless CMS solutions like
+            Sanity and WPGraphQL, I offer a full-stack approach to modern web
+            development.
           </p>
         </Column>
       </GridContainer>

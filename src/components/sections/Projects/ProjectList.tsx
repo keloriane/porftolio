@@ -154,11 +154,15 @@ export default function ProjectItem({
                       src={urlFor(tag).url()}
                       alt=""
                       className={`${
-                        tag.alt === "Nextjs" ? "h-[10px]" : "h-[10px]"
-                      } ${tag.alt === "Sanity" ? "h-[10px]" : "h-[10px]"}`}
+                        tag.alt === "Nextjs" ? "h-[14px]" : "h-[20px]"
+                      } ${tag.alt === "Sanity" ? "h-[14px]" : "h-[20px]"}`}
                     />
                   )}
-                  {tag.alt === "Nextjs" || tag.alt === "Sanity" ? "" : tag.alt}
+                  <p>
+                    {tag.alt === "Nextjs" || tag.alt === "Sanity"
+                      ? ""
+                      : tag.alt}
+                  </p>
                 </Badge>
               ))}
             </div>

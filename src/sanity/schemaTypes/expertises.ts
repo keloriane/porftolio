@@ -11,7 +11,8 @@ export const expertises = {
     {
       name: "description",
       title: "Description",
-      type: "string",
+      type: "array",
+      of: [{ type: "block" }], // Rich text editor field
     },
     {
       name: "expertises",
@@ -28,8 +29,9 @@ export const expertises = {
             },
             {
               name: "expertisesDescription",
-              type: "text",
               title: "Description",
+              type: "array",
+              of: [{ type: "block" }], // Rich text editor field
             },
             {
               name: "tags",
