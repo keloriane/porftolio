@@ -26,17 +26,17 @@ export default async function Home() {
         }}
       >
         <div className="flex">
-          <h2 className="text-6xl font-semibold">Let’s Work Together</h2>
+          <h2 className="text-6xl font-semibold">{`Let\'s Work Together`}</h2>
         </div>
 
         <div className="mt-10">
           <p>
-            I'm always excited to take on new challenges and collaborate on
-            creative projects. Whether you’re looking for a complete website
+            {`I\'m always excited to take on new challenges and collaborate on
+            creative projects. Whether you\'re looking for a complete website
             overhaul, a new e-commerce platform, or enhancing your current
-            site’s design and performance, I can help bring your vision to life.
-            Feel free to reach out for collaboration opportunities, or if you’d
-            just like to chat about a new project!
+            site\'s design and performance, I can help bring your vision to
+            life. Feel free to reach out for collaboration opportunities, or if
+            you\'d just like to chat about a new project!`}
           </p>
         </div>
       </div>

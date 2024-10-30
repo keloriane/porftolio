@@ -110,9 +110,9 @@ export default function ContactForm() {
               ref={descRef}
               className="mb-6 text-xl text-gray-600 dark:text-gray-300"
             >
-              I'm always open to discussing new projects, creative ideas, or
+              {`I'm always open to discussing new projects, creative ideas, or
               opportunities to be part of your vision. Let's create something
-              amazing together!
+              amazing together!`}
             </p>
             <div ref={contactInfoRef} className="space-y-4">
               <div className="flex items-center space-x-4 text-gray-700 dark:text-gray-200">
