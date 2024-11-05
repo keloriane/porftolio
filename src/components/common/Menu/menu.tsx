@@ -71,7 +71,10 @@ const Menu = () => {
                 />
               </svg>
             </a>
-            <a href="https://linkedin.com/in/your-linkedin" target="_blank">
+            <a
+              href="https://www.linkedin.com/in/kevin-flabat-420a74ba/"
+              target="_blank"
+            >
               <svg
                 width="21"
                 height="21"
@@ -167,7 +170,10 @@ const Menu = () => {
                 />
               </svg>
             </a>
-            <a href="https://linkedin.com/in/your-linkedin" target="_blank">
+            <a
+              href="https://www.linkedin.com/in/kevin-flabat-420a74ba/"
+              target="_blank"
+            >
               <svg
                 width="21"
                 height="21"
