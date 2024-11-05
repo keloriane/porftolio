@@ -11,8 +11,12 @@ import { ToastProvider } from "@/components/Ui/toast";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
+  title: "Portfolio Kevin Flabat",
   description: "Creative developer based in Brussels",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
 };
 
 export default async function RootLayout({
@@ -22,6 +26,10 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
+      </head>
       <LoadingProvider>
         <SlugProvider>
           <ToastProvider>
