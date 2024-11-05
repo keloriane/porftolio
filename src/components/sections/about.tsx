@@ -4,7 +4,7 @@ import Column from "../common/Col/col";
 
 const About = () => {
   return (
-    <div>
+    <section id="about">
       <GridContainer columns={24} gap={"[24px]"}>
         <Column colStart={[2, 2, 2, 2]} colEnd={[18, 24, 10, 10]}>
           <h2 className="font-semibold md:text-[2.5rem] text-[1.5rem] font-primary">
@@ -36,7 +36,7 @@ const About = () => {
           </p>
         </Column>
       </GridContainer>
-    </div>
+    </section>
   );
 };
 

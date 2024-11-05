@@ -73,7 +73,7 @@ const HeroProject: React.FC<{ projectItem: Project }> = ({ projectItem }) => {
 
   const renderTechBadges = () => (
     <div className="flex gap-[20px] flex-wrap items-center mt-[24px]">
-      {projectItem.tags.map((tag, i) => (
+      {projectItem.tech.map((tag, i) => (
         <Badge
           variant={"default"}
           className="text-[17px] text-light font-light flex items-center px-[10px] gap-[5px]"
@@ -84,10 +84,10 @@ const HeroProject: React.FC<{ projectItem: Project }> = ({ projectItem }) => {
             <img
               src={urlFor(tag).url()}
               alt=""
-              className={`${tag === "Nextjs" ? "h-[18px]" : "h-[30px]"}`}
+              className={`${tag.alt === "Nextjs" || tag.alt === "Sanity" ? "h-[18px]" : "h-[20px]"}`}
             />
           )}
-          {tag !== "Nextjs" && tag}
+          {tag.alt !== "Nextjs" && tag.alt !== "Sanity" && tag.alt}
         </Badge>
       ))}
     </div>
@@ -169,11 +169,31 @@ const HeroProject: React.FC<{ projectItem: Project }> = ({ projectItem }) => {
         </Column>
       </GridContainer>
       <GridContainer columns={24} className="py-[150px]">
-        <Column colStart={2} colEnd={5}>
+        <Column colStart={2} colEnd={4}>
           <h2 className="text-6xl">Technologies:</h2>
         </Column>
         <Column colStart={7} colEnd={24}>
           {renderTechBadges()}
+        </Column>
+      </GridContainer>
+      <GridContainer columns={24} className="py-[200px]">
+        <Column colStart={2} colEnd={10}>
+          <h2 className="text-6xl">What the client said:</h2>
+        </Column>
+        <Column
+          colStart={12}
+          colEnd={24}
+          className={twMerge(styles.challengeContainer, "text-xl text-primary")}
+        >
+          <p>
+            I was tasked with building an online portfolio for a professional
+            photographer who had an extensive collection of high-quality images
+            to showcase. The main challenge was organizing these images in a way
+            that would not only look visually appealing but also ensure seamless
+            navigation and user experience. To achieve this, I focused heavily
+            on crafting the perfect sitemap and layout that allowed users to
+            explore the gallery intuitively.
+          </p>
         </Column>
       </GridContainer>
     </>

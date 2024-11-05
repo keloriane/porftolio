@@ -41,29 +41,21 @@ export default function ProjectItem({
 
     projectTl
       .to(
-        projectTitle,
-        {
-          color: "white", // Change the text color to white when the background covers it
-          left: 40,
-          duration: 0.3,
-        },
-        "start"
-      )
-      .to(
-        number,
-        {
-          color: "white", // Change the text color to white when the background covers it
-          right: 20,
-          duration: 0.3,
-        },
-        "start"
-      )
-      .to(
         layer,
         {
           opacity: 1, // Slide the black layer from right to left
           duration: 0.5,
           ease: "power3.out",
+        },
+        "start"
+      )
+      .to(
+        projectTitleRef.current,
+        {
+          opacity: 1, // Slide the black layer from right to left
+          duration: 0.15,
+          ease: "power3.out",
+          color: "black",
         },
         "start"
       );
@@ -112,7 +104,7 @@ export default function ProjectItem({
       className="relative text-primary overflow-hidden"
     >
       <div
-        className="top-0 left-0 absolute bg-[#303030] opacity-0 w-full h-full z-9"
+        className="top-0 left-0 absolute  opacity-0 w-full h-full z-9"
         ref={layerP}
         style={{
           right: "100%", // Start with the black background hidden
@@ -123,39 +115,43 @@ export default function ProjectItem({
       {/* Border line animation */}
       <div ref={linesBorder} className="w-full h-[1px] bg-primary"></div>
 
-      <div key={project.slug.current} className=" relative z-10" ref={linkRef}>
+      <div key={project.projectTitle} className=" relative z-10" ref={linkRef}>
         <Link
-          href={`/projects/${project.slug.current}`}
+          href={`${project.slug.current === "nicolas-frank" ? "#" : project.projectUrl}`}
           className="flex justify-between h-full py-4"
+          target="blank"
         >
           <div className="flex flex-col justify-center">
-            <div className="md:text-[65px] text-[45px] w-full flex justify-between">
+            <div className="md:text-[30px] text-[30px] font-semibold w-full flex justify-between">
               {/* The project title */}
               <h2
                 className="relative"
                 ref={projectTitleRef}
                 style={{
-                  color: "black", // Initially black
+                  color: "#858585", // Initially black
                   transition: "color 0.3s ease",
                 }}
               >
                 {project.projectTitle}
               </h2>
             </div>
+            <div>
+              <h4>{project.intro ? project.intro : ""}</h4>
+            </div>
             <div className="flex gap-4 mt-[24px] flex-wrap">
               {project.tech.map((tag: any) => (
                 <Badge
                   key={tag.alt}
                   variant={"default"}
-                  className="text-[14px] text-light font-light flex items-center px-[10px] gap-[5px] border-none ml-7"
+                  className="text-[10px] text-light font-light flex items-center px-[10px] gap-[5px] border-none ml-2"
                 >
                   {tag && (
                     <img
                       src={urlFor(tag).url()}
                       alt=""
                       className={`${
-                        tag.alt === "Nextjs" ? "h-[14px]" : "h-[20px]"
-                      } ${tag.alt === "Sanity" ? "h-[14px]" : "h-[20px]"}`}
+                        tag.alt === "Nextjs" ? "h-[10px]" : "h-[14px]"
+                      } ${tag.alt === "Sanity" ? "h-[10px]" : "h-[14px]"}`}
                     />
                   )}
                   <p>

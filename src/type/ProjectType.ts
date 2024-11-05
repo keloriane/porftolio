@@ -10,6 +10,7 @@ export interface ProjectList {
 export interface Project {
   projectUrl: string;
   description: string;
+  intro: string;
   tags: string[];
   _key: string;
   slug: {

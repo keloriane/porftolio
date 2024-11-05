@@ -6,6 +6,7 @@ import Menu from "@/components/common/Menu/menu";
 import { SlugProvider } from "@/context/SlugContext";
 import CustomCursor from "@/components/common/Cursor/cursor";
 import { getProjectsImage } from "@/lib/query";
+import { ToastProvider } from "@/components/Ui/toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,11 +24,13 @@ export default async function RootLayout({
     <html lang="en">
       <LoadingProvider>
         <SlugProvider>
-          <body>
-            <Menu />
+          <ToastProvider>
+            <body>
+              <Menu />
 
-            {children}
-          </body>
+              {children}
+            </body>
+          </ToastProvider>
         </SlugProvider>
       </LoadingProvider>
     </html>

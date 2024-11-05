@@ -6,10 +6,12 @@ import { Button } from "@/components/Ui/button";
 import { Input } from "@/components/Ui/input";
 import { Textarea } from "@/components/Ui/textarea";
 import { Label } from "@/components/Ui/label";
-import { toast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function ContactForm() {
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -62,18 +64,25 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       const response = await fetch("/api/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      if (response.status === 200) {
-        toast({
-          title: "Success",
-          description: `Thank you, ${formData.firstname}. Your message was sent successfully!`,
-          duration: 4000,
-        });
+      if (response.ok) {
+        toast.success(
+          `Thank you, ${formData.firstname}. Your message was sent successfully!`,
+          {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          }
+        );
         setFormData({
           firstname: "",
           lastname: "",
@@ -81,20 +90,27 @@ export default function ContactForm() {
           phone: "",
           message: "",
         });
+      } else {
+        throw new Error("Failed to send message");
       }
     } catch (error) {
-      toast({
-        title: "Error",
-        description: "An error occurred. Please try again.",
-        duration: 4000,
+      toast.error("An error occurred. Please try again.", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <section
       id="contact"
-      className="py-20 min-h-screen flex items-center bg-gradient-to-br dark:from-gray-900 dark:to-gray-800"
+      className="py-20 min-h-screen flex items-center bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800"
     >
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -131,83 +147,63 @@ export default function ContactForm() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white dark:bg-gray-800 p-8 rounded-lg ">
+          <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg">
             <form onSubmit={handleSubmit} className="space-y-6" ref={formRef}>
               <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="firstname">First name</Label>
-                  <Input
-                    id="firstname"
-                    name="firstname"
-                    value={formData.firstname}
-                    onChange={handleInputChange}
-                    required
-                    placeholder="John"
-                    className="mt-1"
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="lastname">Last name</Label>
-                  <Input
-                    id="lastname"
-                    name="lastname"
-                    value={formData.lastname}
-                    onChange={handleInputChange}
-                    required
-                    placeholder="Doe"
-                    className="mt-1"
-                  />
-                </div>
-              </div>
-              <div>
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  placeholder="example@mail.com"
-                  className="mt-1"
-                />
-              </div>
-              <div>
-                <Label htmlFor="phone">Phone</Label>
-                <Input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  required
-                  placeholder="+123 456 7890"
-                  className="mt-1"
-                />
-              </div>
-              <div>
-                <Label htmlFor="message">Message</Label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  required
-                  placeholder="Write your message here..."
-                  className="mt-1"
-                  rows={4}
-                />
+                {Object.entries(formData).map(([key, value]) => (
+                  <div
+                    key={key}
+                    className={key === "message" ? "sm:col-span-2" : ""}
+                  >
+                    <Label htmlFor={key}>
+                      {key.charAt(0).toUpperCase() + key.slice(1)}
+                    </Label>
+                    {key === "message" ? (
+                      <Textarea
+                        id={key}
+                        name={key}
+                        value={value}
+                        onChange={handleInputChange}
+                        required
+                        placeholder={`Enter your ${key}`}
+                        className="mt-1"
+                        rows={4}
+                        disabled={isLoading}
+                      />
+                    ) : (
+                      <Input
+                        id={key}
+                        name={key}
+                        type={
+                          key === "email"
+                            ? "email"
+                            : key === "phone"
+                              ? "tel"
+                              : "text"
+                        }
+                        value={value}
+                        onChange={handleInputChange}
+                        required
+                        placeholder={`Enter your ${key}`}
+                        className="mt-1"
+                        disabled={isLoading}
+                      />
+                    )}
+                  </div>
+                ))}
               </div>
               <Button
                 type="submit"
                 className="w-full sm:w-auto px-8 py-3 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold hover:from-blue-600 hover:to-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 ease-in-out"
+                disabled={isLoading}
               >
-                Send Message
+                {isLoading ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </div>
         </div>
       </div>
+      <ToastContainer />
     </section>
   );
 }
