@@ -14,7 +14,16 @@ const Testimonial = ({ testimonials }: { testimonials: TestimonialItem }) => {
           prevEl: ".left",
         }}
         spaceBetween={24}
-        slidesPerView={2}
+        breakpoints={{
+          480: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 40,
+          },
+        }}
         className="mt-[100px]"
       >
         {testimonials.testimonial.map((testimonial, i) => (

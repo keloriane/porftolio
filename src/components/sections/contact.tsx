@@ -6,7 +6,7 @@ import { Button } from "@/components/Ui/button";
 import { Input } from "@/components/Ui/input";
 import { Textarea } from "@/components/Ui/textarea";
 import { Label } from "@/components/Ui/label";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, FileArchiveIcon } from "lucide-react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -110,7 +110,7 @@ export default function ContactForm() {
   return (
     <section
       id="contact"
-      className="py-20 min-h-screen flex items-center bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800"
+      className="py-20 min-h-screen flex items-center dark:from-gray-900 dark:to-gray-800"
     >
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -133,29 +133,38 @@ export default function ContactForm() {
             <div ref={contactInfoRef} className="space-y-4">
               <div className="flex items-center space-x-4 text-gray-700 dark:text-gray-200">
                 <Mail className="w-6 h-6" />
-                <span>kevin.flbt@gmail.com</span>
+                <a href="mailto:kevin.flbt@gmail.com">kevin.flbt@gmail.com</a>
               </div>
               <div className="flex items-center space-x-4 text-gray-700 dark:text-gray-200">
                 <Phone className="w-6 h-6" />
-                <span>+32 494 43 03 47</span>
+                <a href="tel:+32494430347">+32 494 43 03 47</a>
               </div>
               <div className="flex items-center space-x-4 text-gray-700 dark:text-gray-200">
                 <MapPin className="w-6 h-6" />
                 <span>Belgium</span>
               </div>
+              <div className="flex items-center space-x-4 text-gray-700 dark:text-gray-200">
+                <FileArchiveIcon className="w-6 h-6" />
+                <a href={"/CV-Kevin-Flabat.pdf"} download>
+                  Download my resume
+                </a>
+              </div>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg">
-            <form onSubmit={handleSubmit} className="space-y-6" ref={formRef}>
-              <div className="grid sm:grid-cols-2 gap-4">
+          <div className="bg-white dark:bg-gray-900 p-8 md:p-10 lg:p-12 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+            <form onSubmit={handleSubmit} className="space-y-8" ref={formRef}>
+              <div className="grid sm:grid-cols-2 gap-6">
                 {Object.entries(formData).map(([key, value]) => (
                   <div
                     key={key}
                     className={key === "message" ? "sm:col-span-2" : ""}
                   >
-                    <Label htmlFor={key}>
+                    <Label
+                      htmlFor={key}
+                      className="text-sm font-medium text-gray-700 dark:text-gray-200"
+                    >
                       {key.charAt(0).toUpperCase() + key.slice(1)}
                     </Label>
                     {key === "message" ? (
@@ -166,8 +175,8 @@ export default function ContactForm() {
                         onChange={handleInputChange}
                         required
                         placeholder={`Enter your ${key}`}
-                        className="mt-1"
-                        rows={4}
+                        className="mt-2 block w-full rounded-lg border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 px-4 py-2 text-gray-900 dark:text-gray-200 shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-400 transition-colors duration-200 ease-in-out"
+                        rows={5}
                         disabled={isLoading}
                       />
                     ) : (
@@ -185,7 +194,7 @@ export default function ContactForm() {
                         onChange={handleInputChange}
                         required
                         placeholder={`Enter your ${key}`}
-                        className="mt-1"
+                        className="mt-2 block w-full rounded-lg border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 px-4 py-2 text-gray-900 dark:text-gray-200 shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-400 transition-colors duration-200 ease-in-out"
                         disabled={isLoading}
                       />
                     )}
@@ -194,7 +203,7 @@ export default function ContactForm() {
               </div>
               <Button
                 type="submit"
-                className="w-full sm:w-auto px-8 py-3 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold hover:from-blue-600 hover:to-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 ease-in-out"
+                className="w-full sm:w-auto px-8 py-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold hover:from-indigo-600 hover:to-purple-700 focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-800 transition-transform duration-300 ease-in-out transform hover:scale-105"
                 disabled={isLoading}
               >
                 {isLoading ? "Sending..." : "Send Message"}
