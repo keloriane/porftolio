@@ -85,7 +85,7 @@ const Menu = () => {
                 />
               </svg>
             </a>
-            <a href="mailto:your-email@example.com">
+            <a href="mailto:kevin.flbt@gmail.com">
               <svg
                 width="25"
                 height="25"
@@ -181,7 +181,7 @@ const Menu = () => {
                 />
               </svg>
             </a>
-            <a href="mailto:your-email@example.com">
+            <a href="mailto:kevin.flbt@gmail.com">
               <svg
                 width="25"
                 height="25"
