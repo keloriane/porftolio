@@ -19,14 +19,14 @@ const Expertises = async () => {
             <h2 className="font-semibold md:text-6xl text:5xl text-primary text-center">
               {expertise[0].title}
             </h2>
-            <p className="text-light text-center">
+            {/* <p className="text-light text-center">
               “We are consultants, researchers, designers, 3D artists,
               programmers, marketers, and challenge enthusiasts. We merge
               analytical, technical, creative, and strategic skills with a
               relentless pursuit of technological advancements. We thrive on
               testing and refining, we revel in innovation, but most
               importantly, we thrive on self-improvement.”
-            </p>
+            </p> */}
           </div>
         </Column>
       </GridContainer>
