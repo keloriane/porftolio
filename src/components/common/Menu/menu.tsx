@@ -156,7 +156,7 @@ const Menu = () => {
 
           {/* Social Icons */}
           <div className="flex space-x-6">
-            <a href="https://github.com/your-github" target="_blank">
+            <a href="https://github.com/keloriane" target="_blank">
               <svg
                 width="22"
                 height="21"

@@ -8,6 +8,7 @@ import CustomCursor from "@/components/common/Cursor/cursor";
 import { getProjectsImage } from "@/lib/query";
 import { ToastProvider } from "@/components/Ui/toast";
 
+import { Analytics } from "@vercel/analytics/react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -31,6 +32,7 @@ export default async function RootLayout({
         <link rel="apple-touch-icon" href="/apple-icon.png" />
       </head>
       <LoadingProvider>
+        <Analytics />
         <SlugProvider>
           <ToastProvider>
             <body>
