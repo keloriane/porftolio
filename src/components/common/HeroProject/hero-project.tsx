@@ -109,9 +109,9 @@ const HeroProject: React.FC<{ projectItem: Project }> = ({ projectItem }) => {
         />
         <GridContainer columns={24} className="relative z-20 text-body">
           <Column colStart={3} colEnd={15} className="items-baseline">
-            <h1 ref={refs.title} className="text-[6vw] capitalize">
+            <h2 ref={refs.title} className="text-[6vw] capitalize">
               {projectItem.projectTitle}
-            </h1>
+            </h2>
           </Column>
           <Column colStart={16} colEnd={25} className="text-lg leading-[36px]">
             <div ref={refs.description}>

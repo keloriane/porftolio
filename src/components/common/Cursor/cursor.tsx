@@ -135,6 +135,7 @@ export default function CustomCursor({
             alt=""
             fill
             className="object-cover"
+            sizes="(max-width: 320px) 400px, 400px"
           />
         )}
       </div>

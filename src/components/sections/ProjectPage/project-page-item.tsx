@@ -51,8 +51,8 @@ export default function BentoGridProjects({
             >
               {/* Dark overlay with gradient on hover */}
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-60" />
-
               {/* Project Image */}
+
               <img
                 src={urlFor(project.previewSecond).url()}
                 alt={project.projectTitle}
@@ -68,7 +68,6 @@ export default function BentoGridProjects({
                 onLoad={handleImageLoad}
                 onError={handleImageLoad}
               />
-
               {/* Project Details on Hover */}
               <div className="absolute inset-0 p-6  flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 <div className="flex justify-between">

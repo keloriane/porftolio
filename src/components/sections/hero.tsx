@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import Profile from "@/../public/profile.png";
 import Image from "next/image";
 import { gsap } from "gsap";
+import Breath from "../Webgl/Breath";
 
 const Hero: React.FC = () => {
   const titleRef = useRef<HTMLDivElement>(null);
@@ -41,32 +42,36 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section className="h-[100vh] flex items-center justify-between px-10">
-      <div className="flex items-center w-full justify-between max-w-[1280px] m-auto ">
-        {/* Left Section (Text) */}
-        <div id="title" className="text-grey">
-          <h2
-            className="text-[38px] md:text-[68px] lg:text-[80px] font-light leading-tight font-primary"
-            ref={titleRef}
-          >
-            Creative Developer <br />
-            <span className="text-[#989898]"> currently based in</span> <br />
-            Brussels
-          </h2>
-        </div>
+    <>
+      <Breath />
+      <section className="h-[100vh] flex items-center justify-between px-10">
+        <div className="flex items-center w-full justify-between max-w-[1280px] m-auto ">
+          {/* Left Section (Text) */}
+          <div id="title" className="text-grey">
+            <h1
+              className="text-[38px] md:text-[68px] lg:text-[80px] font-light leading-tight font-primary"
+              ref={titleRef}
+            >
+              Creative Developer <br />
+              <span className="text-[#989898]"> currently based in</span> <br />
+              Brussels
+            </h1>
+          </div>
 
-        {/* Right Section (Image) */}
-        <div className="relative h-[340px] w-[340px] justify-center lg:flex sm:hidden md:hidden hidden  ">
-          <Image
-            id="image"
-            src={Profile.src}
-            alt="Placeholder Image"
-            className="object-cover"
-            fill
-          />
+          {/* Right Section (Image) */}
+          <div className="relative h-[340px] w-[340px] justify-center lg:flex sm:hidden md:hidden hidden  ">
+            <Image
+              id="image"
+              src={Profile.src}
+              alt="Placeholder Image"
+              className="object-cover"
+              fill
+              sizes="(max-width: 768px) 320px, 720px"
+            />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

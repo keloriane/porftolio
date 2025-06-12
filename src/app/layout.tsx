@@ -7,6 +7,7 @@ import { SlugProvider } from "@/context/SlugContext";
 import CustomCursor from "@/components/common/Cursor/cursor";
 import { getProjectsImage } from "@/lib/query";
 import { ToastProvider } from "@/components/Ui/toast";
+import GoogleAnalytics from "@/components/common/GoogleAnalytics";
 
 import { Analytics } from "@vercel/analytics/react";
 const inter = Inter({ subsets: ["latin"] });
@@ -30,9 +31,14 @@ export default async function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-icon.png" />
+        <meta
+          name="google-site-verification"
+          content="Ornwafmds03D3qsAKsQhKnkO-Oe1zEMKKMLj_zk-CkM"
+        />
       </head>
       <LoadingProvider>
         <Analytics />
+        <GoogleAnalytics />
         <SlugProvider>
           <ToastProvider>
             <body>

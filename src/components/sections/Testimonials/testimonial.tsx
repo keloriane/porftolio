@@ -40,6 +40,7 @@ const Testimonial = ({ testimonials }: { testimonials: TestimonialItem }) => {
                     alt=""
                     fill
                     className="object-cover rounded-full"
+                    sizes="(max-width: 168px) 100px, 120px"
                   />
                 </div>
                 <div className="">

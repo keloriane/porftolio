@@ -17,11 +17,11 @@ const Menu = () => {
         <div className="flex justify-between items-center">
           {/* Left Section: Name */}
           <div className="flex items-center gap-[24px]">
-            <h1 className="text-xl sm:text-2xl font-bold flex items-center gap-[50px]">
+            <h2 className="text-xl sm:text-2xl font-bold flex items-center gap-[50px]">
               <Link href="/">
                 <Logo />
               </Link>
-            </h1>
+            </h2>
             <nav className="hidden md:flex space-x-6 text-[16px]">
               <a href="/#about" className="hover:text-accent">
                 About
