@@ -43,7 +43,7 @@ const Hero: React.FC = () => {
 
   return (
     <>
-      <Breath />
+      {/* <Breath /> */}
       <section className="h-[100vh] flex items-center justify-between px-10">
         <div className="flex items-center w-full justify-between max-w-[1280px] m-auto ">
           {/* Left Section (Text) */}
