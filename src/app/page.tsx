@@ -9,6 +9,8 @@ import CustomCursor from "@/components/common/Cursor/cursor";
 import { getProjectsImage } from "@/lib/query";
 import GridContainer from "@/components/common/Container/container";
 import Column from "@/components/common/Col/col";
+import { Analytics } from "@vercel/analytics/react";
+import GoogleAnalytics from "@/components/common/GoogleAnalytics";
 
 export default async function Home() {
   const projectImages = await getProjectsImage();
@@ -46,6 +48,8 @@ export default async function Home() {
           </div>
         </Column>
       </GridContainer>
+      <Analytics />
+      <GoogleAnalytics />
       <Footer />
     </main>
   );

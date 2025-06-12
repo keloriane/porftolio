@@ -37,14 +37,13 @@ export default async function RootLayout({
         />
       </head>
       <LoadingProvider>
-        <Analytics />
-        <GoogleAnalytics />
         <SlugProvider>
           <ToastProvider>
             <body>
               <Menu />
-
               {children}
+              <Analytics />
+              <GoogleAnalytics />
             </body>
           </ToastProvider>
         </SlugProvider>
